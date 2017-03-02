@@ -83,8 +83,8 @@ function paint(ctx) {
 	if (pause) { 
 		ctx.textAlign = 'center';
 		ctx.font="80px Arial";
-		ctx.shadowColor = '#f00'
-		if(!init)
+		ctx.shadowColor = '#f00';
+		if(!init){
 			if(gameover){
 				ctx.fillText('GAMEOVER', 300, 150);
 			}else{
@@ -93,10 +93,10 @@ function paint(ctx) {
 		}else{
 			ctx.fillText('PLAY', 300, 150); 
 		}
-		init=false;
-		ctx.font="14px Arial";
+		init = false;
+		ctx.font = "14px Arial";
 		ctx.textAlign = 'left'; 
-	} 
+	}
 } 
 
 function reset() { 
