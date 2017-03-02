@@ -93,6 +93,7 @@ function paint(ctx) {
 		}else{
 			ctx.fillText('PLAY', 300, 150); 
 		}
+		init=false;
 		ctx.font="14px Arial";
 		ctx.textAlign = 'left'; 
 	} 
