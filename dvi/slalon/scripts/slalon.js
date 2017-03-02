@@ -16,8 +16,7 @@ var KEY_ENTER = 13,
 	puntos = 0,
 	numPuertas = 0,
 	dir = 1,
-	gameover = false,
-	init = true; 
+	gameover = false; 
 
 function Rectangle(x, y, width, height) { 
 	this.x = (x == null) ? 0 : x; 
@@ -83,20 +82,15 @@ function paint(ctx) {
 	if (pause) { 
 		ctx.textAlign = 'center';
 		ctx.font="80px Arial";
-		ctx.shadowColor = '#f00';
-		if(!init){
-			if(gameover){
-				ctx.fillText('GAMEOVER', 300, 150);
-			}else{
-				ctx.fillText('PAUSE', 300, 150); 
-			}
+		ctx.shadowColor = '#f00'
+		if(gameover){
+			ctx.fillText('GAMEOVER', 300, 150);
 		}else{
-			ctx.fillText('PLAY', 300, 150); 
+			ctx.fillText('PAUSE', 300, 150); 
 		}
-		init = false;
-		ctx.font = "14px Arial";
+		ctx.font="14px Arial";
 		ctx.textAlign = 'left'; 
-	}
+	} 
 } 
 
 function reset() { 
