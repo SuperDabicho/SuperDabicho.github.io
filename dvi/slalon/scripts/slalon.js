@@ -91,7 +91,7 @@ function paint(ctx) {
 				ctx.fillText('PAUSE', 300, 150); 
 			}
 		}else{
-			ctx.fillText('PRESS ENTER', 300, 150); 
+			ctx.fillText('PLAY', 300, 150); 
 		}
 		ctx.font="14px Arial";
 		ctx.textAlign = 'left'; 
