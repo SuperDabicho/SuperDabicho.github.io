@@ -62,7 +62,7 @@ MemoryGame = function(gs) {
 	
 	this.onClick = function(posCard){	//si levantada=true, hay una carta levantada. despues de levantar la segunda hay que ponerlo a false de nuevo.
 		var carta = cartas[posCard];
-		if(posCard != null && posCard >=0 && clickOn && estado!=4){
+		if(posCard != null && posCard >0 && clickOn && estado!=4){
 			if(!carta.vista){
 				if(levantada){
 					if(carta != cartaLevantada){
@@ -118,8 +118,8 @@ MemoryGameCard = function(id) {
 				clickOn=true;
 			}, 900);
 			score -= 10;
-			if(score >= 0) estado = 2;
-			else estado = 4;
+			if(score > 0){ estado = 2;}
+			else{ estado = 4; score = 0;}
 		}
 		levantada=false;
 	};

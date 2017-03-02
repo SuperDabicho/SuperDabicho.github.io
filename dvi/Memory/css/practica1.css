@@ -13,7 +13,7 @@
 }
 #reinicio{
 	position: absolute;
-	top:50%; left: 200px;
+	top:50%; left: 120px;
 	z-index: 1;
 	font-size: 40px;
 	border: 5px solid #008000;
