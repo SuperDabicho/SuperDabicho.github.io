@@ -36,10 +36,17 @@ MemoryGame = function(gs) {
 	
 	this.draw = function(){
 		var string;
-		if(estado == 0)	string= "Memory Game - "+score;
-		else if(estado == 1)	string = "Match found! - "+score;
-		else if(estado == 2)	string = "Try again - "+score;
-		else if(estado == 3)	string = "You win! ... this time - "+score;
+		if(estado == 0)	string= "Memory Game! "+score;
+		else if(estado == 1)	string = "Match found! "+score;
+		else if(estado == 2)	string = "Try again! "+score;
+		else if(estado == 3){
+			string = "You win this time... "+score;
+			document.getElementById('reinicio').style.display = 'block';
+		}
+		else if(estado == 4){
+			string = "You lose! "+score;
+			document.getElementById('reinicio').style.display = 'block';
+		}
 		gs.drawMessage(string);
 		
 		for(var i=0; i<numCartas; i++){
@@ -55,28 +62,24 @@ MemoryGame = function(gs) {
 	
 	this.onClick = function(posCard){	//si levantada=true, hay una carta levantada. despues de levantar la segunda hay que ponerlo a false de nuevo.
 		var carta = cartas[posCard];
-		if(posCard != null && posCard >=0){
-			if(clickOn){
-				if(!carta.vista){
-					if(levantada){
-						if(carta != cartaLevantada){
-							carta.flip();
-							carta.compareTo(cartaLevantada);
-							levantada = false;
-						}
-					}else{
+		if(posCard != null && posCard >=0 && clickOn && estado!=4){
+			if(!carta.vista){
+				if(levantada){
+					if(carta != cartaLevantada){
 						carta.flip();
-						cartaLevantada = carta;
-						levantada = true;
+						carta.compareTo(cartaLevantada);
+						levantada = false;
 					}
+				}else{
+					carta.flip();
+					cartaLevantada = carta;
+					levantada = true;
 				}
 			}
 		}
 	};
 
 };
-
-
 
 /**
  * Constructora de las cartas del juego. Recibe como parámetro el nombre del sprite que representa la carta.
@@ -115,7 +118,8 @@ MemoryGameCard = function(id) {
 				clickOn=true;
 			}, 900);
 			score -= 10;
-			estado = 2;
+			if(score >= 0) estado = 2;
+			else estado = 4;
 		}
 		levantada=false;
 	};

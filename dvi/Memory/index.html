@@ -16,10 +16,11 @@
 	</head>
 
 	<body>
-
+		<button id="reinicio">Reiniciar</button>
 		<div id="gamecontainer" class="fullscreen"></div>
 		<script src="src/auxiliar.js"></script>
 		<script src="src/practica1.js"></script>
+		<script src="src/jquery.min.js"></script>
 
 		<!-- Para forzar la carga de las fuentes y que se puedan usar en el canvas  -->
 		<script type="text/javascript">
@@ -27,8 +28,11 @@
 			google: { families: [ 'Lobster' ] },
 			active: function() { start(); }
 		};
+		$(document).on("click", "#reinicio", function(){
+			location.reload();
+		});
 		</script>
-
+		
 
 	</body>
 	</html>
