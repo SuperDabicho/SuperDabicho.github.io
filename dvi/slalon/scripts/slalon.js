@@ -143,8 +143,8 @@ function act() {
 				puntosNuevos = 5;
 			}
 			numPuertas++;
-			xPuntos = puerta.x - 10;
-			yPuntos = puerta.y - 10;
+			xPuntos = puerta.x;
+			yPuntos = puerta.y;
 			
 			var orientacion = random(2);
 			if(orientacion == 1){ 
