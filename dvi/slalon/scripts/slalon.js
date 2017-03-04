@@ -16,6 +16,9 @@ var KEY_ENTER = 13,
 	puntos = 0,
 	numPuertas = 0,
 	dir = 1,
+	puntosNuevos = 0,
+	xPuntos=0;
+	yPuntos=0;
 	gameover = false; 
 
 function Rectangle(x, y, width, height) { 
@@ -71,11 +74,8 @@ function paint(ctx) {
 	ctx.fillStyle = '#000';
 	diana. fill(ctx);
 	
-	// Debug last key pressed 
-	ctx.fillStyle = '#fff'; 
-	//ctx.fillText('Last Press: ' + lastPress, 0, 20); 
-	
 	//Puntos
+	ctx.fillStyle = '#fff'; 	
 	ctx.fillText('Puntos: ' + puntos, 0, 10);
 	
 	// Draw pause 
@@ -90,7 +90,10 @@ function paint(ctx) {
 		}
 		ctx.font="14px Arial";
 		ctx.textAlign = 'left'; 
-	} 
+	}
+	//mostrar los puntos ganados
+	ctx.fillText('+'+puntosNuevos, xPuntos, yPuntos);
+	
 } 
 
 function reset() { 
@@ -131,14 +134,17 @@ function act() {
 		if (player.y < 0) { player.y = 0; pause = true; gameover = true; } 
 		
 		if(player.intersects(puerta) || player.intersects(diana)){
-			if(player.intersects(puerta)){
-				puntos += 5;
-				numPuertas++;
-			}
+
 			if(player.intersects(diana)){
+				puntos += 10;
+				puntosNuevos=10;
+			}else{
 				puntos += 5;
-				numPuertas++;
+				puntosNuevos = 5;
 			}
+			numPuertas++;
+			xPuntos = puerta.x - 10;
+			yPuntos = puerta.y - 10;
 			
 			var orientacion = random(2);
 			if(orientacion == 1){ 
@@ -173,7 +179,7 @@ function repaint() {
  
 function run() { 
 	setTimeout(run, 75/(1+(numPuertas/10))); 
-	act();
+	act();	
 } 
 
 function init() { 
