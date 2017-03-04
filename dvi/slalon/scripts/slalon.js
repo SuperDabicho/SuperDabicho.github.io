@@ -92,13 +92,15 @@ function paint(ctx) {
 		ctx.textAlign = 'left'; 
 	}
 	//mostrar los puntos ganados
-	ctx.fillText('+'+puntosNuevos, xPuntos, yPuntos);
+	if(puntosNuevos != 0)
+		ctx.fillText('+'+puntosNuevos, xPuntos, yPuntos);
 	
 } 
 
 function reset() { 
 	puntos = 0;
 	numPuertas = 0;
+	puntosNuevos = 0;
 	dir = 1; 
 	player.x = 40; 
 	player.y = 40;
