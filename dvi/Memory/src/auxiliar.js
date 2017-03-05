@@ -182,5 +182,5 @@ var InputServer = function() {
 
 // Finalmente ejecutaremos la función start cuando se haya cargado la página
 window.addEventListener("load", start);
-
+//document.getElementById('reinicio').addEventListener("click", function(){ start(); removeReinicio(); });
 
