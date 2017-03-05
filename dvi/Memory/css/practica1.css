@@ -13,14 +13,20 @@
 }
 #reinicio{
 	position: absolute;
-	top:50%; left: 120px;
+	top:50%; left: 40%;
 	z-index: 1;
 	font-size: 40px;
 	border: 5px solid #008000;
     background-color: #8e8c8c;
     color: black;
-	display: none;
+	/*display: none;*/
 }
 #reinicio:hover{
 	background-color: #c7c7c7;
+}
+
+@media screen and (max-width: 450px){
+	.canvas{
+		width: 100%;
+	}
 }

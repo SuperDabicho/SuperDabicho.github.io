@@ -11,8 +11,23 @@ var MemoryGame = MemoryGame || {},
 	levantada = false,
 	cartaLevantada = null,
 	clickOn=true,
-	score = 60;
+	score = 60,
+	intervalID = 0;
 
+function botonReinicio(){
+	var but = document.createElement("button");
+	but.id = 'reinicio';
+	but.innerHTML = "Reiniciar";
+	but.style.left = document.getElementsByClassName('canvas').offsetWidth / 3;
+	document.getElementById('gamecontainer').appendChild(but);
+}
+
+function removeReinicio() {
+    var elem = document.getElementById('reinicio');
+    elem.parentNode.removeChild(elem);
+    return false;
+}
+	
 /**
  * Constructora de MemoryGame (aqui todas las funciones)
  */
@@ -21,14 +36,14 @@ MemoryGame = function(gs) {
 	this.initGame = function(){
 		
 		for (var i=0; i<2;i++){
-			cartas.push(new MemoryGameCard("8-ball"));
-			cartas.push(new MemoryGameCard("potato"));
-			cartas.push(new MemoryGameCard("dinosaur"));
-			cartas.push(new MemoryGameCard("kronos"));
-			cartas.push(new MemoryGameCard("rocket"));
-			cartas.push(new MemoryGameCard("unicorn"));
-			cartas.push(new MemoryGameCard("guy"));
-			cartas.push(new MemoryGameCard("zeppelin"));
+			cartas.push(new MemoryGameCard("rebels"));
+			cartas.push(new MemoryGameCard("empire"));
+			cartas.push(new MemoryGameCard("hydra"));
+			cartas.push(new MemoryGameCard("shield"));
+			cartas.push(new MemoryGameCard("ring"));
+			cartas.push(new MemoryGameCard("triforce"));
+			cartas.push(new MemoryGameCard("spartan"));
+			cartas.push(new MemoryGameCard("capsule"));
 		}
 		shuffle(cartas);
 		this.loop();
@@ -41,23 +56,25 @@ MemoryGame = function(gs) {
 		else if(estado == 2)	string = "Try again! "+score;
 		else if(estado == 3){
 			string = "You win this time... "+score;
-			document.getElementById('reinicio').style.display = 'block';
+			botonReinicio();
+			//document.getElementById('reinicio').style.display = 'block';
 		}
 		else if(estado == 4){
 			string = "You lose! "+score;
-			document.getElementById('reinicio').style.display = 'block';
+			botonReinicio();
+			//document.getElementById('reinicio').style.display = 'block';
 		}
 		gs.drawMessage(string);
 		
 		for(var i=0; i<numCartas; i++){
 			cartas[i].draw(gs, i);
 		}
-		
+		if(estado==3 || estado==4) clearInterval(intervalID);
 	};
 	
 	this.loop = function(){
 		var self=this;
-		setInterval(self.draw, 16);
+		intervalID = setInterval(self.draw, 16);
 	};
 	
 	this.onClick = function(posCard){	//si levantada=true, hay una carta levantada. despues de levantar la segunda hay que ponerlo a false de nuevo.
