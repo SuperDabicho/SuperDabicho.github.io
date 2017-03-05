@@ -7,7 +7,7 @@ var canvas, // Canvas en el que dibujaremos el juego
 	ctx,	// Contexto de dibujado
 	gs,		// Servidor gráfico
 	game,	// Juego
-	best = 0,
+	best = -1,
 	reset = false;
 
 // Servidor gráfico ad-hoc para este juego
@@ -123,7 +123,7 @@ var InitCanvas = function(container, width, height, className) {
  * Función que inicia el juego. Una vez lanzada, comenzará todo el juego
  */
 function start() {
-	if(best == 0){
+	if(best < 0){
 		InitCanvas("gamecontainer", 320, 460, "canvas");
 		gs = new CustomGraphicServer();
 		InputServer();
