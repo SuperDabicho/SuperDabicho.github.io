@@ -6,7 +6,9 @@
 var canvas, // Canvas en el que dibujaremos el juego
 	ctx,	// Contexto de dibujado
 	gs,		// Servidor gráfico
-	game;	// Juego
+	game,	// Juego
+	best = 0,
+	reset = false;
 
 // Servidor gráfico ad-hoc para este juego
 var CustomGraphicServer = function() {
@@ -86,6 +88,12 @@ var CustomGraphicServer = function() {
 		ctx.fillStyle = "#FFF";
 		ctx.fillText(message, canvas.width/2, 30);
 		ctx.fillStyle = "#FFF";
+		if(best > 0){
+			ctx.textAlign = "left";
+			ctx.font = "10px Lobster";
+			ctx.fillStyle = "#FFF";
+			ctx.fillText('BEST: '+best, 2, 45);
+		}
 	};
 };
 
@@ -117,6 +125,8 @@ var InitCanvas = function(container, width, height, className) {
 function start() {
 	InitCanvas("gamecontainer", 320, 460, "canvas");
 	InputServer();
+	console.log(best);
+	if(best == 0) game = new MemoryGame(gs);
 	gs.load("img/sprites.png",
 		{
 		"hydra": {"x":336,"y":406,"w":165,"h":200},
@@ -130,7 +140,7 @@ function start() {
 		"capsule": {"x":2,"y":2,"w":165,"h":200}
 		},
 		function() {
-			game = new MemoryGame(gs);
+			
 			game.initGame();
 		});
 }

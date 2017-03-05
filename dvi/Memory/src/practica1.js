@@ -27,6 +27,10 @@ function removeReinicio() {
     elem.parentNode.removeChild(elem);
     return false;
 }
+
+function reset(){
+	MemoryGame.initGame();
+}
 	
 /**
  * Constructora de MemoryGame (aqui todas las funciones)
@@ -34,6 +38,14 @@ function removeReinicio() {
 MemoryGame = function(gs) {
 	
 	this.initGame = function(){
+		cartas = new Array();
+		estado = 0;
+		encontradas = 0;
+		levantada = false;
+		cartaLevantada = null;
+		clickOn=true;
+		score = 60;
+		intervalID = 0;
 		
 		for (var i=0; i<2;i++){
 			cartas.push(new MemoryGameCard("rebels"));
@@ -57,19 +69,20 @@ MemoryGame = function(gs) {
 		else if(estado == 3){
 			string = "You win this time... "+score;
 			botonReinicio();
-			//document.getElementById('reinicio').style.display = 'block';
+			if(score > best) best=score;
 		}
 		else if(estado == 4){
 			string = "You lose! "+score;
 			botonReinicio();
-			//document.getElementById('reinicio').style.display = 'block';
 		}
 		gs.drawMessage(string);
 		
 		for(var i=0; i<numCartas; i++){
 			cartas[i].draw(gs, i);
 		}
-		if(estado==3 || estado==4) clearInterval(intervalID);
+		if(estado==3 || estado==4){
+			clearInterval(intervalID);
+		}
 	};
 	
 	this.loop = function(){
