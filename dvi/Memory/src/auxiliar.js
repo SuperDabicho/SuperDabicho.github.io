@@ -111,22 +111,24 @@ var InitCanvas = function(container, width, height, className) {
     canvas.width = width;
     canvas.height = height;
     canvas.className = className;
+	canvas.id = className;
     ctx = canvas.getContext("2d");
     if(!ctx){
 		window.alert("Update your browser!");
     }
     containerElement.appendChild(canvas);
-    gs = new CustomGraphicServer();
 };
 
 /**
  * Función que inicia el juego. Una vez lanzada, comenzará todo el juego
  */
 function start() {
-	InitCanvas("gamecontainer", 320, 460, "canvas");
-	InputServer();
-	console.log(best);
-	if(best == 0) game = new MemoryGame(gs);
+	if(best == 0){
+		InitCanvas("gamecontainer", 320, 460, "canvas");
+		gs = new CustomGraphicServer();
+		InputServer();
+		game = new MemoryGame(gs);
+	}
 	gs.load("img/sprites.png",
 		{
 		"hydra": {"x":336,"y":406,"w":165,"h":200},

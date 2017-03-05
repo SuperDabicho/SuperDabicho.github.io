@@ -13,16 +13,16 @@
 }
 #reinicio{
 	position: absolute;
-	top:50%; left: 40%;
+	top:50%;
 	z-index: 1;
 	font-size: 40px;
 	border: 5px solid #008000;
-    background-color: #8e8c8c;
+    background-color: #c7c7c7;
     color: black;
 	/*display: none;*/
 }
 #reinicio:hover{
-	background-color: #c7c7c7;
+	background-color: #8e8c8c;
 }
 
 @media screen and (max-width: 450px){
