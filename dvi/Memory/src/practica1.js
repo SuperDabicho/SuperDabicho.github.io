@@ -21,6 +21,10 @@ function botonReinicio(){
 	document.getElementById('gamecontainer').appendChild(but);
 	var aux = (document.getElementById('canvas').offsetWidth/2) - (document.getElementById('reinicio').offsetWidth/2);
 	document.getElementById('reinicio').style.left = aux;
+	document.getElementById('reinicio').onclick=function(){
+			start();
+			removeReinicio();
+		};
 }
 
 function removeReinicio() {
