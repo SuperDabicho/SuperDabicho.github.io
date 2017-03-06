@@ -12,7 +12,8 @@ var MemoryGame = MemoryGame || {},
 	cartaLevantada = null,
 	clickOn=true,
 	score = 60,
-	intervalID = 0;
+	intervalID = 0,
+	touchReinicio = false;
 
 function botonReinicio(){
 	var but = document.createElement("button");
@@ -21,11 +22,11 @@ function botonReinicio(){
 	document.getElementById('gamecontainer').appendChild(but);
 	var aux = (document.getElementById('canvas').offsetWidth/2) - (document.getElementById('reinicio').offsetWidth/2);
 	document.getElementById('reinicio').style.left = aux;
-	document.getElementById('reinicio').addEventListener("touchstart", handlerReinicio);
 	document.getElementById('reinicio').addEventListener("click", handlerReinicio);
+	document.getElementById('reinicio').addEventListener("touchstart", handlerReinicio);
 }
 function handlerReinicio(){
-	setTimeout(function(){start(); removeReinicio();}, 500);
+	setTimeout(function(){removeReinicio(); start(); }, 300);
 }
 
 function removeReinicio() {
