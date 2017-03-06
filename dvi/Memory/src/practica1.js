@@ -74,12 +74,10 @@ MemoryGame = function(gs) {
 		else if(estado == 2)	string = "Try again! "+score;
 		else if(estado == 3){
 			string = "You win this time... "+score;
-			botonReinicio();
 			if(score > best) best=score;
 		}
 		else if(estado == 4){
 			string = "You lose! "+score;
-			botonReinicio();
 		}
 		gs.drawMessage(string);
 		
@@ -88,6 +86,7 @@ MemoryGame = function(gs) {
 		}
 		if(estado==3 || estado==4){
 			clearInterval(intervalID);
+			botonReinicio();
 		}
 	};
 	
