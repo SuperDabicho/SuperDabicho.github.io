@@ -176,7 +176,7 @@ var InputServer = function() {
     };
 
 	window.addEventListener("click", handleMouse);
-	window.addEventListener("touchstart", handleTouch);
+	window.addEventListener("touchend", handleTouch);
 
 };
 
