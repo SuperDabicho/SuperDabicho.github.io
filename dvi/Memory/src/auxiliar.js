@@ -172,7 +172,7 @@ var InputServer = function() {
 	var handleTouch = function(evt) {
         hasTouch = true;
         clientToCard(evt.touches[0].pageX, evt.touches[0].pageY);
-        evt.preventDefault();
+        //evt.preventDefault();
     };
 
 	window.addEventListener("click", handleMouse);

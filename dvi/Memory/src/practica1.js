@@ -12,26 +12,46 @@ var MemoryGame = MemoryGame || {},
 	cartaLevantada = null,
 	clickOn=true,
 	score = 60,
-	intervalID = 0,
-	touchReinicio = false;
+	touchRe = false,
+	intervalID = 0;
 
 function botonReinicio(){
 	var but = document.createElement("button");
+	but.className = 'reinicio';
 	but.id = 'reinicio';
 	but.innerHTML = "Reiniciar";
 	document.getElementById('gamecontainer').appendChild(but);
 	var aux = (document.getElementById('canvas').offsetWidth/2) - (document.getElementById('reinicio').offsetWidth/2);
 	document.getElementById('reinicio').style.left = aux;
-	document.getElementById('reinicio').addEventListener("click", handlerReinicio);
-	document.getElementById('reinicio').addEventListener("touchstart", handlerReinicio);
+	document.getElementById('reinicio').addEventListener("touchstart", reinicioTouch);
+	document.getElementById('reinicio').addEventListener("click", reinicioClick);
 }
+
+function reinicioClick(evt) {
+	if (touchRe)
+		return;
+	handlerReinicio();
+};
+
+function reinicioTouch(evt) {
+	touchRe = true;
+	handlerReinicio();
+	//evt.preventDefault();
+};
+
+function removeElementsByClass(className){
+    var elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
 function handlerReinicio(){
-	setTimeout(function(){removeReinicio(); start(); }, 300);
+	setTimeout(function(){start(); removeReinicio();}, 500);
 }
 
 function removeReinicio() {
-    var elem = document.getElementById('reinicio');
-    elem.parentNode.removeChild(elem);
+    removeElementsByClass('reinicio');
     return false;
 }
 
@@ -51,6 +71,7 @@ MemoryGame = function(gs) {
 		levantada = false;
 		cartaLevantada = null;
 		clickOn=true;
+		touchRe = false;
 		score = 60;
 		intervalID = 0;
 		
@@ -79,6 +100,7 @@ MemoryGame = function(gs) {
 		}
 		else if(estado == 4){
 			string = "You lose! "+score;
+			if(score > best) best=score;
 		}
 		gs.drawMessage(string);
 		
