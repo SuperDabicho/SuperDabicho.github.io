@@ -14,6 +14,7 @@ var KEY_ENTER = 13,
 	puerta = null,
 	diana = null,
 	puntos = 0,
+	record = 0,
 	numPuertas = 0,
 	dir = 1,
 	puntosNuevos = 0,
@@ -76,7 +77,10 @@ function paint(ctx) {
 	
 	//Puntos
 	ctx.fillStyle = '#fff'; 	
-	ctx.fillText('Puntos: ' + puntos, 0, 10);
+	ctx.fillText('Puntos: ' + puntos, 3, 15);
+	if(record>0){
+		ctx.fillText('Récord: ' + record, canvas.width-85, 15);
+	}
 	
 	// Draw pause 
 	if (pause) { 
@@ -98,6 +102,7 @@ function paint(ctx) {
 } 
 
 function reset() { 
+	if(puntos>record) record = puntos;
 	puntos = 0;
 	numPuertas = 0;
 	puntosNuevos = 0;
@@ -115,7 +120,9 @@ function reset() {
 
 function act() { 
 	if (!pause) {
-		if(gameover) reset();
+		if(gameover){
+			reset();
+		}
 	
 		// Change Direction 
 		if (lastPress == KEY_UP) { dir = 0; } 
