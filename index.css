@@ -1,0 +1,34 @@
+body{
+	font-family: 'Century Gothic', Arial, sans-serif;
+	background-color: #640075;
+	padding: 2%;
+}
+#cabecera{text-align:center;}
+.redondeo{
+	background-color: white;
+	border-radius: 8px;
+	padding: 2%;
+	margin: 2%;
+	text-align: justify;
+	cursor: pointer; 
+}
+.titulines{display: table;}
+.titulines .h2{position: relative; float: left;}
+.bloqueInfo{display:none;}
+.flechita{
+	width: 30px;
+	height: 30px;
+	position: relative;
+	float: left;
+}
+.titulines .h2, .titulines .flechita{
+	margin: 5% 0;
+	display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+@media screen and (max-width: 400px){
+	.redondeo{
+		text-align: center;
+	}
+}

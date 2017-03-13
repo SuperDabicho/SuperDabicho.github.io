@@ -3,22 +3,51 @@
 <head> 
 	<meta charset="UTF-8" /> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+	<link href="index.css" rel="stylesheet" type="text/css" media="all">
+	<script src="src/jquery.min.js"></script> 
 	<!--[if lte IE 8]>
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<![endif]--> 
 	<title>SuperDabicho</title> 
+	<script>
+		$(document).ready(function(){
+		//Cuando se pulsa un titulo, se muestra o se oculta la info
+			$(".redondeo").click(function() {
+				var idTitulo = $(this).attr("id");
+				if($("#"+idTitulo+"1").is(":visible")){
+					$("#"+idTitulo+"1").hide();
+					$("#"+idTitulo+" .flechita").attr("src", "img/flechita-Acordeon.png");
+				}else{
+					$("#"+idTitulo+"1").show();
+					$("#"+idTitulo+" .flechita").attr("src", "img/flechita-Acordeon-Abajo.png");
+				}
+			});
+		});
+	</script>
 </head> 
 <body> 
-	<h1>Repositorio de SuperDabicho</h1>
-	<p>Elige uno de los siguientes juegos implementados por mí. Espero que te gusten.</p>
-	<h3>Juegos con teclas</h3>
-	<ul>
-		<li><a href="dvi/slalon">Slalon Game</a></li>
-	</ul>
-	<h3>Juegos aptos para móvil</h3>
-	<ul>
-		<li><a href="dvi/Memory">Memorión</a></li>
-	</ul>
+
+	<div class="redondeo" id="cabecera">
+		<h1>Repositorio de SuperDabicho</h1>
+		<p>Elige uno de los siguientes juegos implementados por mí. Espero que te gusten.</p>
+	</div>
+	
+	<div class="redondeo" id="teclas">
+		<div class="titulines"><div class="h2">Juegos con teclas</div><img class="flechita" src="img/flechita-Acordeon.png"/></div>
+		<div class="bloqueInfo" id="teclas1">
+			<ul>
+				<li><a href="dvi/slalon">Slalon Game</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="redondeo" id="movil">
+		<div class="titulines"><div class="h2">Juegos aptos para móvil</div><img class="flechita" src="img/flechita-Acordeon.png"/></div>
+		<div class="bloqueInfo" id="movil1">
+			<ul>
+				<li><a href="dvi/Memory">Memorión</a></li>
+			</ul>
+		</div>
+	</div>
 	
 </body> 
 </html>
