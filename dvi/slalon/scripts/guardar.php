@@ -2,7 +2,7 @@
 	
 	$file = fopen("record.txt", "r");
 	$recordPersonal =  $_POST['record'] ;
-	$recordMundial;
+	$recordMundial = 0;
 	while(!feof($file)) {
 		$recordMundial = fgets($file);
 	}

@@ -1,7 +1,7 @@
 <?php
 	
 	$file = fopen("record.txt", "r");
-	$recordMundial="";
+	$recordMundial= 0;
 	
 	while(!feof($file)) {
 		$recordMundial = fgets($file);

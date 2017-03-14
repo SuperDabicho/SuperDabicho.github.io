@@ -25,6 +25,9 @@ var KEY_ENTER = 13,
 function getRecord(){
 	return record;
 }
+function getRec(){
+	return rec;
+}
 	
 function Rectangle(x, y, width, height) { 
 	this.x = (x == null) ? 0 : x; 

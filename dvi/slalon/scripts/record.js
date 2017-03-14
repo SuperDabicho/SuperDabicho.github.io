@@ -3,17 +3,17 @@ function guardarPuntuacion(){
 	//Mediante esta funcion enviamos los datos a la funcion de php de guardar.php
     //var person = prompt("Nombre", "");
 
-		var record = getRecord();
-	    $.ajax({
-	       url: "scripts/guardar.php",
-	       type: "post",
-	       data: {"record" :record},
-	       success: function(data){}
-	    });
+	var re = getRecord();
+	$.ajax({
+	   url: "scripts/guardar.php",
+	   type: "post",
+	   data: {"record" :re},
+	   success: function(data){}
+	});
+	
 }
 
 function leerPuntuacion(){
-	var rec = 0;
     $.ajax({
        url: "scripts/leerRecord.php",
        type: "post",
@@ -23,5 +23,4 @@ function leerPuntuacion(){
            rec = data;
        }
     });
-	return rec;
 }
