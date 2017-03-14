@@ -22,6 +22,10 @@ var KEY_ENTER = 13,
 	yPuntos=0;
 	gameover = false; 
 
+function getRecord(){
+	return record;
+}
+	
 function Rectangle(x, y, width, height) { 
 	this.x = (x == null) ? 0 : x; 
 	this.y = (y == null) ? 0 : y; 

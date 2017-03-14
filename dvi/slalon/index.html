@@ -3,15 +3,25 @@
 <head> 
 	<meta charset="UTF-8" /> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+	<script src="../../src/jquery.min.js"></script> 
 	<!--[if lte IE 8]>
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<![endif]--> 
+	<script type="application/javascript" src="scripts/slalon.js"></script>
+	<script type="application/javascript" src="scripts/record.js"></script>
+	<script>
+	$(document).ready(function(){
+		var recordMundial = leerPuntuacion();
+		$("#recordMundial").html("Récord mundial: "+recordMundial);
+	});
+	</script>
+	
 	<title>Slalon - SuperDabicho</title> 
 </head> 
 <body> 
 	<h1>Slalon Game</h1>
 	<p>Usa las flechas para desplazarte y pasar por las puertas. Pasar por el medio bonifica. ¡Pulsa Enter y a jugar!</p>
 	<p><canvas id="canvas" width="600" height="300" style="background:#999; border: 5px solid #c500ff;"> Canvas not supported by your browser. </canvas></p> 
-	<script type="application/javascript" src="scripts/slalon.js"></script> 
+	<div id="recordMundial">Récord mundial: 0</div>
 </body> 
 </html>
