@@ -18,9 +18,10 @@ var KEY_ENTER = 13,
 	numPuertas = 0,
 	dir = 1,
 	puntosNuevos = 0,
-	xPuntos=0;
-	yPuntos=0;
-	gameover = false; 
+	xPuntos=0,
+	yPuntos=0,
+	gameover = false,
+	rec = 0; 
 
 function getRecord(){
 	return record;
