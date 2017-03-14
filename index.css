@@ -28,7 +28,7 @@ body{
     font-weight: bold;
 }
 @media screen and (max-width: 400px){
-	.redondeo{
+	.redondeo .titulines{
 		text-align: center;
 	}
 }
