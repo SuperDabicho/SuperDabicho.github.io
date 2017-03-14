@@ -13,14 +13,15 @@ function guardarPuntuacion(){
 }
 
 function leerPuntuacion(){
-
+	var rec = 0;
     $.ajax({
        url: "scripts/leerRecord.php",
        type: "post",
        data: "data",
        success: function(response){
            $("#recordMundial").html("Récord mundial: "+response);
-           record = data;
+           rec = data;
        }
     });
+	return rec;
 }

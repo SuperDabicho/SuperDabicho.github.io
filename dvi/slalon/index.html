@@ -12,7 +12,8 @@
 	<script type="application/javascript" src="scripts/record.js"></script>
 	<script>
 	$(document).ready(function(){
-		var recordMundial = leerPuntuacion();
+		leerPuntuacion();
+		var recordMundial = getRecord();
 		$("#recordMundial").html("Récord mundial: "+recordMundial);
 	});
 	</script>
